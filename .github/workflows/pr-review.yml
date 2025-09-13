@@ -58,6 +58,7 @@ jobs:
           github.event_name == 'pull_request_review_comment'
         ) &&
         (
+          contains(github.event.comment.body, '@my-iflow-cli /review ') ||
           contains(github.event.comment.body, '@iflow-cli /review ') ||
           contains(github.event.comment.body, '@iFlow-CLI /review ') ||
           contains(github.event.comment.body, '@IFLOW-CLI /review ') ||
@@ -75,6 +76,7 @@ jobs:
       (
         github.event_name == 'pull_request_review' &&
         (
+          contains(github.event.review.body, '@my-iflow-cli /review ') ||
           contains(github.event.review.body, '@iflow-cli /review ') ||
           contains(github.event.review.body, '@iFlow-CLI /review ') ||
           contains(github.event.review.body, '@IFLOW-CLI /review ') ||
