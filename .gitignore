@@ -35,3 +35,5 @@ Thumbs.db
 
 # GitHub App credentials
 gha-creds-*.json
+
+.iflow/
