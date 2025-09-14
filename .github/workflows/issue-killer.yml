@@ -96,11 +96,10 @@ jobs:
                   "args": [
                     "stdio"
                   ],
-                  "includeTools": [
-                    "create_pull_request",
-                    "list_pull_requests",
-                    "add_issue_comment"
-                  ],
+                   "includeTools": [
+                     "list_pull_requests",
+                     "add_issue_comment"
+                   ],
                     "env": {
                       "GITHUB_PERSONAL_ACCESS_TOKEN": "${{ secrets.GITHUB_TOKEN }}"
                     }
@@ -150,26 +149,24 @@ jobs:
             - Add or modify tests if applicable
             - Reference all shell variables as "${VAR}" (with quotes and braces)
             
-            ## Creating Pull Request
+            ## Creating Branch and Changes
             
-            Once you have implemented the feature, create a pull request using the GitHub MCP tool:
-            1. Use the create_pull_request to create a Pull Request.
-            2. The PR should be created from a new branch with a descriptive name (e.g., feature/issue-${ISSUE_NUMBER}, fix/issue-${ISSUE_NUMBER}, or a descriptive name based on the feature)
-            3. The PR title should be descriptive and reference the issue number
-            4. The PR body should explain what was implemented and reference the issue
-            5. Remember the branch name you create, as it will be needed for the completion comment if PR creation fails
+            Once you have implemented the feature:
+            1. Create and push your changes to a new branch with a descriptive name (e.g., feature/issue-${ISSUE_NUMBER}, fix/issue-${ISSUE_NUMBER}, or a descriptive name based on the feature)
+            2. Use git commands to create the branch, make commits, and push to origin
+            3. Remember the branch name for the completion comment
             
             ## Creating Completion Comment
             
-            After successfully implementing the feature and creating the PR, add a completion comment to the issue using the GitHub MCP tool:
+            After successfully implementing the feature and pushing changes to the branch, add a completion comment to the issue using the GitHub MCP tool:
             1. Use the add_issue_comment to add a comment to issue #${ISSUE_NUMBER}
             2. The comment should include:
                - ✅ Confirmation that the issue has been implemented
                - 🎉 Brief summary of what was accomplished
                - 📋 List of key changes made
-               - 🔗 Link to the created Pull Request (if successful)
-               - 📝 If PR creation failed, provide a manual PR creation link using the actual branch name you created, like: https://github.com/${{ github.repository }}/compare/main...[YOUR_BRANCH_NAME]
+               - 🚀 **Create Pull Request**: Provide a convenient PR creation link using the branch name you created: https://github.com/${{ github.repository }}/compare/main...[YOUR_BRANCH_NAME]?quick_pull=1&title=Fix%20issue%20%23${ISSUE_NUMBER}&body=Fixes%20%23${ISSUE_NUMBER}
                - 🤖 Note that this is an automated implementation
+               - 📝 Instructions to click the link above to review changes and create the PR
             3. Use a friendly tone and include appropriate emojis for better user experience
 
       - name: 'Post Implementation Failure Comment'
